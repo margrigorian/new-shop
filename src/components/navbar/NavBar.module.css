@@ -1,0 +1,80 @@
+.navBar{
+    /* width: 100%; */
+    padding: 10px 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    color: rgb(33, 32, 32);
+    background-color: white;
+    font-family: serif;
+    /* Иначе на ProductPage случается накладка */
+    z-index: 1; 
+    /* box-shadow: 0px 0px 15px grey; */
+}
+.logoContainer{
+    display: flex;
+    align-items: center;
+}
+.logo{
+    flex-grow: 1;
+    color: grey;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    font-size: 15px;
+}
+.logo:hover {
+    color: lightgrey;
+}
+.navBarElementContainer{
+    width: 21%;
+    margin-left: 6%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+.navBarElement{
+    text-decoration: none;
+    color: rgb(33, 32, 32);
+    letter-spacing: 0.5px;
+    font-size: 15px;
+}
+.navBarElement:hover {
+    cursor: pointer;
+    color: grey;
+}
+.active{
+    text-decoration: underline;
+}
+.iconContainer{
+    width: 26%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+.iconHover:hover {
+    color: grey;
+    cursor: pointer;
+}
+.searchContainer{
+    width: 6vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(52, 51, 51);
+    letter-spacing: 0.5px;
+}
+.myShoppingBasketContainer{
+    margin-top: 9px;
+}
+.basketSup{
+    padding: 2px 5px;
+    background-color: lightgrey;
+    border: none;
+    border-radius: 10px;
+    font-size: 12px;
+    color: white;
+}

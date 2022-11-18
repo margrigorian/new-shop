@@ -12,5 +12,5 @@ export default basketSlice.reducer;
 
 export const {} = basketSlice.actions;
 
-export const selectBasket = (state) => state.basket;
+export const selectBasket = (state) => state.basket; // ключ из стора 
 
