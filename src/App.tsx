@@ -6,6 +6,7 @@ import HomePage from './pages/home_page/HomePage';
 import LimitedEditionPage from './pages/limited_edition_page/LimitedEditionPage';
 import CollectionPage from './pages/collection_page/CollectionPage';
 import SearchPage from './pages/search_page/SearchPage';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/limited-edition-page" element={<LimitedEditionPage />}></Route>
           <Route path="/search" element={<SearchPage />}></Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
