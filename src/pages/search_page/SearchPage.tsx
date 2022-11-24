@@ -1,8 +1,10 @@
 import React from 'react';
 import style from "./SearchPage.module.css";
 
-export default function SearchPage() {
+const SearchPage: React.FC = () => {
   return (
     <div>SearchPage</div>
   )
 }
+
+export default SearchPage;

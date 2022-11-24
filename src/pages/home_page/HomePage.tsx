@@ -1,7 +1,7 @@
 import React from 'react';
 import style from "./HomePage.module.css";
 
-export default function HomePage() {
+const HomePage: React.FC = () => {
   return (
     <div className={style.container}>
         <div className={style.largePicture}></div>
@@ -34,3 +34,5 @@ export default function HomePage() {
     </div>
   )
 }
+
+export default HomePage;

@@ -7,7 +7,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
-export default function Footer() {
+const Footer: React.FC = () => {
   return (
     <footer className={style.footer}>
     <div className={style.footerNav}>
@@ -62,3 +62,5 @@ export default function Footer() {
   </footer>
   )
 }
+
+export default Footer;

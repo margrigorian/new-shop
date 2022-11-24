@@ -1,18 +1,16 @@
 import React from 'react';
 import style from "./NavBar.module.css";
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectManage } from '../../store/slices/slice-manage';
-import { selectBasket } from '../../store/slices/slice-basket';
+import { useAppSelector } from '../../store/hook';
+import { useAppDispatch } from '../../store/hook';
+import { isOpenLoginDrawer } from '../../store/slices/slice-manage';
 import { IconButton, Typography } from "@mui/material";
 import { Search, MenuOutlined } from "@mui/icons-material"; 
 
-export default function NavBar() {
-    const manage = useSelector(selectManage);
-    const basket = useSelector(selectBasket);
-    const currentPageLink = window.location.pathname; // или сразу "/", т.к. ограничение действий на 1-й стр 
-
-    console.log(currentPageLink);
+const NavBar: React.FC = () => {
+    const manage = useAppSelector(state => state.manage);
+    const basket = useAppSelector(state => state.basket.basket);
+    const dispatch = useAppDispatch();
 
     return (
         <div className={style.navBar}>
@@ -46,18 +44,16 @@ export default function NavBar() {
 
                 <div className={style.navBarElementContainer}>
                     <NavLink 
-                        // to={manage.token !== "" ? '/collection/' : undefined}
-                        to={manage.token !== "" ? '/collection/' : currentPageLink}
+                        to={manage.token !== "" ? '/collection/' : '/'}
                         className={style.navBarElement} 
-                        // onClick={() => manage.token === "" ? openLoginDrawer() : undefined} // переход на страницу
+                        onClick={() => manage.token === "" ? dispatch(isOpenLoginDrawer(true)) : dispatch(isOpenLoginDrawer(false))}
                     >
                         COLLECTION
                     </NavLink>
                     <NavLink 
-                        // to={manage.token !== "" ? '/limited-edition-page/' : undefined} 
-                        to={manage.token !== "" ? '/limited-edition-page/' : currentPageLink} 
+                        to={manage.token !== "" ? '/limited-edition-page/' : '/'} 
                         className={style.navBarElement}
-                        // onClick={() => manage.token === "" ? openLoginDrawer() : undefined}
+                        onClick={() => manage.token === "" ? dispatch(isOpenLoginDrawer(true)) : dispatch(isOpenLoginDrawer(false))}
                     >
                         LIMITED EDITION
                     </NavLink>
@@ -65,8 +61,7 @@ export default function NavBar() {
 
                 <div className={style.iconContainer}>
                     <NavLink 
-                        // to={manage.token !== "" ? "/search" : undefined} 
-                        to={manage.token !== "" ? "/search" : currentPageLink} 
+                        to={manage.token !== "" ? "/search" : '/'} 
                         style={{textDecoration: "none", color: "rgb(52, 51, 51)"}}
                         // onClick={() => {
                         //     if(manage.token === "") {
@@ -81,7 +76,12 @@ export default function NavBar() {
                             <p>Search</p>
                         </div>
                     </NavLink>
-                    <p className={style.iconHover}>Log in</p>
+                    <p 
+                        className={style.iconHover}
+                        onClick={() => dispatch(isOpenLoginDrawer(true))}
+                    >
+                        Log in
+                    </p>
                     <p 
                         // onClick={() => {manage.token === "" ? openLoginDrawer() : openBasketDrawer()}}
                         className={`${style.myShoppingBasketContainer} ${style.iconHover}`}
@@ -98,3 +98,5 @@ export default function NavBar() {
             </div>
     )
 }
+
+export default NavBar;

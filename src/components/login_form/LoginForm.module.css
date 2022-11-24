@@ -1,0 +1,95 @@
+.formContainer{
+    width: 440px;
+    /* width: 30%; */
+    color: rgb(52, 51, 51);
+    letter-spacing: 0.5px;
+    font-size: 13.5px;
+}
+.closeIcon{
+    text-align: right;
+    font-size: 20px;
+    cursor: pointer;
+    color: rgb(68, 67, 67);
+    margin: 3% 4% 0 0;
+}
+.closeIcon:hover {
+    color:rgb(137, 136, 136);
+}
+.form{
+    width: 80%;
+    margin: 7% auto 12% auto;
+}
+.loginHeaderText{
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5%;
+}
+.enterYourDataText{
+    text-align: center;
+    margin-bottom: 6%;
+}
+.input{
+    width: 91%;
+    padding: 15px;
+    border: 1px solid lightgrey;
+    letter-spacing: 0.5px;
+    outline: none; 
+    /* УБИРАЕТ ЧЕРНЫЙ ФОКУС С INPUT */
+}
+.loginInputContainer{
+    height: 80px;
+}
+.passwordInputContainer{
+    height: 70px;
+}
+.error{
+    font-size: 12px;
+    color: rgb(212, 31, 31);
+    letter-spacing: -0.3px;
+    margin-top: -9px;
+    padding-left: 15px;
+}
+.forgottenPasswordText{
+    text-align: right;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: -1px;
+}
+.forgottenPasswordText:hover {
+    color: grey;
+}
+.checkboxContainer{
+    display: flex;
+    align-items: center;
+    margin: 5% 0 10% 0;
+}
+.checkboxLabel{
+    font-size: 12px;
+}
+.button{
+    border-radius: 10px;
+    background-color: rgb(52, 51, 51);
+    border: none;
+    cursor: pointer;
+    color: white;
+    letter-spacing: 0.5px;
+}
+.button:hover{
+    background-color: rgb(192, 190, 190);
+}
+.submitButton{
+    width: 100%;
+    padding: 5% 0;
+}
+.createButtonContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -13px;
+}
+.createButton{
+    width: 80%;
+    padding: 4% 0;
+    margin-top: 1%;
+}

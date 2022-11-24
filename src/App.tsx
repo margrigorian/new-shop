@@ -2,17 +2,19 @@ import React from 'react';
 import style from './App.module.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from './components/navbar/NavBar';
+import LoginDrawer from './components/login_drawer/LoginDrawer';
 import HomePage from './pages/home_page/HomePage';
 import LimitedEditionPage from './pages/limited_edition_page/LimitedEditionPage';
 import CollectionPage from './pages/collection_page/CollectionPage';
 import SearchPage from './pages/search_page/SearchPage';
 import Footer from './components/footer/Footer';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <BrowserRouter>
         <NavBar />
+        <LoginDrawer />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/collection" element={<CollectionPage />}></Route>
