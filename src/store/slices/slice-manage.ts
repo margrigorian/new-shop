@@ -2,24 +2,29 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type ManageType = {
     token: string,
-    isActiveLoginDrawer: boolean
+    isActiveLoginDrawer: boolean,
+    isActiveBasketDrawer: boolean
 }
 
 const initialState: ManageType = {
     token: "",
-    isActiveLoginDrawer: false
+    isActiveLoginDrawer: false,
+    isActiveBasketDrawer: false
 }
 
 const managementSlice = createSlice({
     name: "managedStates", // имя не имеет никакого функционала?
     initialState,
     reducers: {
-        isOpenLoginDrawer: (state, action: PayloadAction<boolean>) => { // можно вообще не передавать значение            
-            state.isActiveLoginDrawer = action.payload; // или action.payload
+        isOpenLoginDrawer: (state, action: PayloadAction<boolean>) => {           
+            state.isActiveLoginDrawer = action.payload; 
+        },
+        isOpenBasketDrawer: (state, action: PayloadAction<boolean>) => {
+            state.isActiveBasketDrawer = action.payload;
         }
     }
 })
 
 export default managementSlice.reducer;
 
-export const {isOpenLoginDrawer} = managementSlice.actions;
+export const {isOpenLoginDrawer, isOpenBasketDrawer} = managementSlice.actions;

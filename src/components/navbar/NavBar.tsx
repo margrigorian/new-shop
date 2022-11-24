@@ -4,12 +4,13 @@ import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../store/hook';
 import { useAppDispatch } from '../../store/hook';
 import { isOpenLoginDrawer } from '../../store/slices/slice-manage';
+import { isOpenBasketDrawer } from '../../store/slices/slice-manage';
 import { IconButton, Typography } from "@mui/material";
 import { Search, MenuOutlined } from "@mui/icons-material"; 
 
 const NavBar: React.FC = () => {
     const manage = useAppSelector(state => state.manage);
-    const basket = useAppSelector(state => state.basket.basket);
+    const basket = useAppSelector(state => state.basket.products);
     const dispatch = useAppDispatch();
 
     return (
@@ -83,7 +84,8 @@ const NavBar: React.FC = () => {
                         Log in
                     </p>
                     <p 
-                        // onClick={() => {manage.token === "" ? openLoginDrawer() : openBasketDrawer()}}
+                        // onClick={() => manage.token !== "" ? dispatch(isOpenBasketDrawer(true)) : dispatch(isOpenLoginDrawer(true))}
+                        onClick={() => dispatch(isOpenBasketDrawer(true))}
                         className={`${style.myShoppingBasketContainer} ${style.iconHover}`}
                     >
                         My shopping basket <span>

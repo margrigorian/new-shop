@@ -5,11 +5,11 @@ type BasketProductType = {
 }
 
 type BasketType = {
-    basket: BasketProductType[] // массив объектов по типу BasketProductType
+    products: BasketProductType[] // массив объектов по типу BasketProductType
 }
 
 const initialState: BasketType = {
-    basket: []
+    products: []
 }
 
 const basketSlice = createSlice({

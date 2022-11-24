@@ -11,22 +11,17 @@ const LoginDrawer: React.FC = () => {
     const dispatch = useAppDispatch();
     
     return (
-        <div
+        <Drawer
+            anchor='right'
+            open={manage.isActiveLoginDrawer}
             onClick={() => manage.token !== "" ? dispatch(isOpenLoginDrawer(false)) : dispatch(isOpenLoginDrawer(true))}
+            // hideBackdrop // перекрывает все страницу и нет скролла
         >
-            <Drawer
-                anchor='right'
-                // onClose={closeCart} // закрытие при клике в любое пространство
-                open={manage.isActiveLoginDrawer}
-                // hideBackdrop // перекрывает все страницу и нет скролла
-            >
-                <LoginForm 
-                    // closeCart={closeCart} 
-                    // changeRegistrationMode={changeRegistrationMode} 
-                    // openRegistrationForm={openRegistrationForm}
-                />
-            </Drawer>
-        </div>
+            <LoginForm 
+                // changeRegistrationMode={changeRegistrationMode} 
+                // openRegistrationForm={openRegistrationForm}
+            />
+        </Drawer>
     )
 }
 
