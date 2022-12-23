@@ -21,7 +21,10 @@ const BasketDrawer: React.FC = () => {
       <Drawer
           anchor='right'
           open={manage.isActiveBasketDrawer}
-          onClick={() => dispatch(isOpenBasketDrawer(false))}
+          onClick={() => {
+            setActiveBasketChapter(true)
+            dispatch(isOpenBasketDrawer(false))}
+          }
         //   hideBackdrop={true} // серая область
       >
         <div className={style.wrapper} onClick={(event) => event.stopPropagation()}>

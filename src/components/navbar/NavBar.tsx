@@ -84,8 +84,7 @@ const NavBar: React.FC = () => {
                         Log in
                     </p>
                     <p 
-                        // onClick={() => manage.token !== "" ? dispatch(isOpenBasketDrawer(true)) : dispatch(isOpenLoginDrawer(true))}
-                        onClick={() => dispatch(isOpenBasketDrawer(true))}
+                        onClick={() => manage.token === "" ? dispatch(isOpenLoginDrawer(true)) : dispatch(isOpenBasketDrawer(true))}
                         className={`${style.myShoppingBasketContainer} ${style.iconHover}`}
                     >
                         My shopping basket <span>

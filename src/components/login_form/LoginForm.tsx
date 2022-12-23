@@ -5,9 +5,8 @@ import { useAppDispatch } from '../../store/hook';
 import { useForm, SubmitHandler } from "react-hook-form";
 import Checkbox from '@mui/material/Checkbox';
 import { isOpenLoginDrawer } from '../../store/slices/slice-manage';
-// import { getToken } from '../../store/slices/slice-basket';
-// import request from '../../store/request/request';
-// import { tokenLink } from '../../store/request/link';
+import { isOpenRegistationForm } from '../../store/slices/slice-manage';
+import { requestToken } from '../../store/slices/slice-manage';
 
 interface ILoginForm {
     email: string,
@@ -18,23 +17,14 @@ const LoginForm: React.FC = () => {
     const manage = useAppSelector(state => state.manage);
     const dispatch = useAppDispatch();
     // useForm - это метод, который возварщает объект
+
     const { register, formState: { errors }, reset, handleSubmit} = useForm<ILoginForm>({
         mode:"onBlur"
     });
 
     const onSubmit: SubmitHandler<ILoginForm> = (data) => {
         reset();
-
-        // async function getNewToken(data) {
-        //     const userToken = await request("POST", tokenLink, data, "token");
-        //     dispatch(getToken({userToken: userToken.data.data.token}));
-        //     // if(token.token) { // НЕ СРАБАТЫВАЕТ НА УСЛОВИИ. ПОЧЕМУ?
-        //         closeCart();
-        //     // }
-        // }
-        
-        // getNewToken(data);
-        
+        dispatch(requestToken(data));
     };
 
     return (
@@ -104,8 +94,8 @@ const LoginForm: React.FC = () => {
                     <p>Don't have an account?</p>
                     <button 
                         className={`${style.button} ${style.createButton}`}
-                        // style={{backgroundColor: openRegistrationForm ? "rgb(137, 136, 136)" : undefined}}
-                        // onClick={() => changeRegistrationMode()}
+                        style={{backgroundColor: manage.isActiveRegistrationForm ? "rgb(137, 136, 136)" : undefined}}
+                        onClick={() => dispatch(isOpenRegistationForm(true))}
                     >
                         Create Account
                     </button>

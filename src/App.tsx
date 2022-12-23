@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from './components/navbar/NavBar';
 import LoginDrawer from './components/login_drawer/LoginDrawer';
 import BasketDrawer from './components/basket_drawer/BasketDrawer';
+import RegistrationForm from './components/registration_form/RegistrationForm';
 import HomePage from './pages/home_page/HomePage';
 import LimitedEditionPage from './pages/limited_edition_page/LimitedEditionPage';
 import CollectionPage from './pages/collection_page/CollectionPage';
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <NavBar />
         <LoginDrawer />
         <BasketDrawer />
+        <RegistrationForm />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/collection" element={<CollectionPage />}></Route>
