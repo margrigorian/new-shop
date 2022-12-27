@@ -6,7 +6,7 @@ export type userType = {
     password: string 
 }
 
-function request(method: string, url: string, payload: userType, token: string) {
+function request(method: string, url: string, payload: userType | undefined, token: string) {
     return axios({method, url, data: payload, headers: {
         "Authorization": `Bearer ${token}` 
     }})

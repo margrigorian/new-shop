@@ -1,0 +1,46 @@
+.container{
+    color: rgb(52, 51, 51);
+    letter-spacing: 0.5px;
+    margin-bottom: 100px;
+    font-family: serif;
+}
+.limitedEditionHeader{
+    padding: 2% 36px 0% 3%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+.limitedEditionNavBarContainer{
+    display: flex;  
+}
+.limitedEditionNavBarEl{
+    margin-right: 30px;
+}
+.cursor{
+    cursor: pointer;
+}
+.colorHover:hover {
+    color:  grey;
+}
+.largeTextContainer{
+    padding: 0% 4%;
+    margin-top: -25px;
+}
+.largeText{
+    display: flex;
+    justify-content: space-between;
+    font-size: 80px;
+    font-weight: bold;
+    line-height: 0.9;
+}
+.secondLargeText{
+    margin-top: -160px;
+}
+.capsule{
+    text-align: right;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 25px 30px 65px 0;
+    background-color: rgb(73, 73, 39);
+    color: white;
+}

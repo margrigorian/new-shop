@@ -1,13 +1,22 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AnyAction, createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import request from "../request/request";
 import { links } from "../request/links";
 import { userType } from "../request/request";
+
+export type ProductType = {
+    id: string,
+    price: number,
+    src: string,
+    title: string
+}
 
 type ManageType = {
     token: string,
     isActiveLoginDrawer: boolean,
     isActiveBasketDrawer: boolean,
     isActiveRegistrationForm: boolean,
+    collectionProducts: ProductType[] | null,
+    limitedEditionProducts: ProductType[] | null,
     loading: boolean,
     error: string | null
 }
@@ -17,21 +26,23 @@ const initialState: ManageType = {
     isActiveLoginDrawer: false,
     isActiveBasketDrawer: false,
     isActiveRegistrationForm: false,
+    collectionProducts: [],
+    limitedEditionProducts: [],
     loading: false,
     error: null
 }
 
 
-export const requestToken = createAsyncThunk<string, userType, {rejectValue: string}>( // 1 - ожид. результат запроса, 2 - тип передав. параметров через дисп., 3 - типизация ошибки
+export const requestToken = createAsyncThunk<string, userType, {rejectValue: string}>( // 1 - ожид. результат запроса, 2 - тип передав. параметров через дисп., 3 - возвр. знач-е при ошибке
     'managedStates/requestToken',
     async function(data, {rejectWithValue}) { // метод для обработки ошибок
         try{
-            const response = await request("POST", links.tokenLink, data, "token");
+            const response: any = await request("POST", links.tokenLink, data, "token");
             // console.log(response);
             
             // КАК ОБРАБОТАТЬ ОШИБКУ?
-            // if(!response) { 
-            //     rejectWithValue("Server Error"); // исключение, которое прервет обработку
+            // if(response.status !== 200) { 
+            //     rejectWithValue("Error"); // исключение, которое прервет обработку
             // }  
 
             return response.data.data.token;
@@ -56,6 +67,12 @@ const managementSlice = createSlice({
         isOpenRegistationForm: (state, action: PayloadAction<boolean>) => {
             state.isActiveRegistrationForm = action.payload;
         },
+        getProductsOfCollection: (state, action) => {
+            state.collectionProducts = action.payload;
+        },
+        getProductsOfLimitedEdition: (state, action) => {
+            state.limitedEditionProducts = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -65,12 +82,12 @@ const managementSlice = createSlice({
             })
             .addCase(requestToken.fulfilled, (state, action) => { // выполненный
                 if(action.payload) { // так не делается, но чтобы у меня правильно тракотовалось отсутсвие токена
-                    state.token = action.payload;
                     state.loading = false;
+                    state.token = action.payload;
                     state.isActiveRegistrationForm = false;
                     state.isActiveLoginDrawer = false; // при catch тоже падаем сюда, т.к. requestToken.rejected не прописан
                 }else {
-                    state.loading = false;
+                    state.loading = false; // на странице можно отрисовать
                     state.error = 'Wrong data'; // на странице можно будет отрисовать, исп. material UI
                 }
             })
@@ -84,4 +101,6 @@ const managementSlice = createSlice({
 
 export default managementSlice.reducer;
 
-export const {isOpenLoginDrawer, isOpenBasketDrawer, isOpenRegistationForm} = managementSlice.actions;
+export const {
+                isOpenLoginDrawer, isOpenBasketDrawer, isOpenRegistationForm,
+                getProductsOfCollection, getProductsOfLimitedEdition} = managementSlice.actions;
