@@ -1,21 +1,30 @@
 import React from 'react';
 import style from './ProductList.module.css';
 import { NavLink } from 'react-router-dom';
-import { useAppDispatch } from '../../store/hook';
-// import { add } from '../../store/slices/slice-products';
-// import { addToBasket } from '../../store/slices/slice-basket';
+import { useAppDispatch, useAppSelector } from '../../store/hook';
 import { ProductType } from '../../store/slices/slice-manage';
+import request from '../../store/request/request';
+import { links } from '../../store/request/links';
+import { addProductToLoсalBasket } from '../../store/slices/slice-basket';
+// import { requestAddProductToBasket } from '../../store/slices/slice-basket';
 import AddIcon from '@mui/icons-material/Add';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 
 
 interface ProductProps {
-    products: ProductType[]
+    products: ProductType[];
 }
 
-const ProductList: React.FC<ProductProps> = ({products}) => {
-    const dispatch = useAppDispatch();
 
+const ProductList: React.FC<ProductProps> = ({products}) => {
+    const manage = useAppSelector(state => state.manage);
+    const dispatch = useAppDispatch();
+    
+    async function addProduct(productId: string) {
+        const add = await request("POST", links.addOrRemoveProductLink, {"product_id": productId}, manage.token);
+        console.log(add);
+    }
+    
     return (
         <div className={style.container}>
         {
@@ -40,8 +49,11 @@ const ProductList: React.FC<ProductProps> = ({products}) => {
                             <AddIcon 
                                 sx={{fontSize: 20, cursor: "pointer", color: "rgb(73, 73, 39)"}}
                                 onClick={() => {
-                                    // dispatch(add(item.id))
-                                    // dispatch(addToBasket(item))
+                                    // НЕ СРАБАТЫВАЕТ
+                                    // dispatch(requestAddProductToBasket({id: currentProduct.id, token: manage.token}));
+
+                                    addProduct(item.id);
+                                    dispatch(addProductToLoсalBasket(item));
                                 }}
                             />
                             <BookmarkBorderOutlinedIcon sx={{fontSize: 20, cursor: "pointer", color: "lightGrey"}} />

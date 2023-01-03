@@ -18,7 +18,8 @@ const CollectionPage: React.FC = () => {
       
       async function getProducts() {
           const products = await request("GET", links.collectionLink, undefined, manage.token);
-
+          console.log(products.data.data.items);
+          
           dispatch(getProductsOfCollection(products.data.data.items));
       }
 

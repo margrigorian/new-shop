@@ -1,13 +1,14 @@
 import { AnyAction, createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import request from "../request/request";
 import { links } from "../request/links";
-import { userType } from "../request/request";
+import { UserType } from "../request/request";
 
 export type ProductType = {
     id: string,
     price: number,
     src: string,
-    title: string
+    title: string,
+    count?: number
 }
 
 type ManageType = {
@@ -33,7 +34,7 @@ const initialState: ManageType = {
 }
 
 
-export const requestToken = createAsyncThunk<string, userType, {rejectValue: string}>( // 1 - ожид. результат запроса, 2 - тип передав. параметров через дисп., 3 - возвр. знач-е при ошибке
+export const requestToken = createAsyncThunk<string, UserType, {rejectValue: string}>( // 1 - ожид. результат запроса, 2 - тип передав. параметров через дисп., 3 - возвр. знач-е при ошибке
     'managedStates/requestToken',
     async function(data, {rejectWithValue}) { // метод для обработки ошибок
         try{

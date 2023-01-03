@@ -23,6 +23,7 @@ const LoginForm: React.FC = () => {
     });
 
     const onSubmit: SubmitHandler<ILoginForm> = (data) => {
+        console.log(data);
         reset();
         dispatch(requestToken(data));
     };

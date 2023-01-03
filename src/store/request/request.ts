@@ -1,12 +1,22 @@
 import axios from "axios";  
 
-export type userType = {
+export type UserType = {
     fullname?: string,
     email: string,
     password: string 
 }
 
-function request(method: string, url: string, payload: userType | undefined, token: string) {
+type SendProductType = {
+    product_id: string,
+    type?: string,
+    action?: string
+}
+
+// type ProductIdType = {
+//     product_id: string,
+// }
+
+function request(method: string, url: string, payload: UserType | SendProductType | undefined, token: string) {
     return axios({method, url, data: payload, headers: {
         "Authorization": `Bearer ${token}` 
     }})
