@@ -9,14 +9,15 @@ export type UserType = {
 type SendProductType = {
     product_id: string,
     type?: string,
-    action?: string
+    action?: string,
 }
 
-// type ProductIdType = {
-//     product_id: string,
-// }
+type CommentType = {
+    product_id: string,
+    body: string
+}
 
-function request(method: string, url: string, payload: UserType | SendProductType | undefined, token: string) {
+function request(method: string, url: string, payload: UserType | SendProductType | CommentType | undefined, token: string) {
     return axios({method, url, data: payload, headers: {
         "Authorization": `Bearer ${token}` 
     }})

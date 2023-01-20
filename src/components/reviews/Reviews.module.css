@@ -1,0 +1,119 @@
+.container{
+    padding-top: 80px;
+}
+.reviewsText{
+    font-size: 25px;
+    font-weight: bold;
+}
+.reviewsNumberSpan{
+    font-size: 16px;
+    color: grey;
+}
+.starsContainer{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* z-index: -1; */
+}
+.grade{
+    width: 240px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px 0 80px 0;
+}
+.averageRatingText{
+    font-size: 14px;
+    color: grey;
+    width: 120px;
+    text-align: center;
+    margin-top: 0px;
+}
+.buttonLeaveReviews{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 0;
+    color: white;
+    font-family: serif;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    margin-top: 30px;
+    background-color: rgb(52, 51, 51);
+}
+.buttonLeaveReviews:hover {
+    background-color: grey;
+}
+.alert{
+    position: absolute;
+    top: 40%;
+    right: 26%;
+    width: 200px;
+    padding: 14px 0;
+    border: 1.5px solid rgb(52, 51, 51);
+    border-radius: 10px;
+    background-color: rgb(252, 248, 248);
+    text-align: center;
+    font-size: 15px;
+}
+
+.reviewForm{
+    width: 605px;
+    margin-bottom: 100px;
+}
+/* .nameInputContainer{
+    height: 80px;
+} */
+.input{
+    width: 94.5%;
+    padding: 15px;
+    border: 1px solid lightgrey;
+    font-family: serif;
+    letter-spacing: 0.5px;
+    margin-bottom: 35px;
+}
+/* .commentInputContainer{
+    height: 20px;
+} */
+.commentInput{
+    height: 200px;
+    font-family: "Gill Sans", sans-serif;
+}
+.error{
+    font-size: 14px;
+    color: rgb(212, 31, 31);
+    letter-spacing: -0.3px;
+    margin-top: 3px;
+    padding-left: 15px;
+}
+.buttonAddReviews{
+    width: 100%;
+    border-radius: 10px;
+    padding: 15px 0;
+    background-color: white;
+    font-family: serif;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+.reviewContainer{
+    margin-bottom: 50px;
+}
+.name{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: rgb(71, 70, 70);
+}
+.review{
+    padding: 6px 30px;
+    background-color: rgb(247, 244, 244);
+}
+.date{
+    text-align: right;
+    color: grey;
+    font-size: 14px;
+    margin-bottom: -15px;
+}

@@ -20,7 +20,7 @@ import { links } from '../../store/request/links';
 import { RequestProductType } from '../../store/slices/slice-basket';
 // import { requestAddProductToBasket } from '../../store/slices/slice-basket';
 import { addProductToLoсalBasket } from '../../store/slices/slice-basket';
-// import Reviews from '../../components/reviews/Reviews';
+import Reviews from '../../components/reviews/Reviews';
 // import AnchorLink from "react-anchor-link-smooth-scroll-v2"; // НЕ НАХОДИТСЯ ЯКОРЬ В МОДУЛЕ
 
 
@@ -35,8 +35,8 @@ const ProductPage: React.FC = () => {
     const basketProduct = basket.products.find(item => item.id === id);
   
     useEffect(() => {
-        async function getProduct() {
-          await requestCurrentProduct();
+        function getProduct() {
+          requestCurrentProduct();
           if(currentProduct) {
             if(currentProduct.reactions.yourReaction === "like") {
               setLike(true);
@@ -50,7 +50,7 @@ const ProductPage: React.FC = () => {
   
         getProduct();
   
-    }, [id, manage.token, currentProduct])
+    }, [id, manage.token]) // если указываю currentProduct, запускает бесконечный повтор
   
     console.log(basket.products);
 
@@ -76,6 +76,8 @@ const ProductPage: React.FC = () => {
       }
     }
 
+    console.log(currentProduct);
+    
     return (
       <div className={style.container}>
         <div className={style.navigate}>
@@ -132,6 +134,7 @@ const ProductPage: React.FC = () => {
                   <StarIcon sx={{fontSize: "18px", marginRight: "4px"}} />
                   <p>0</p>
                   <FiberManualRecordIcon sx={{fontSize: "5px", margin: "0 20px"}} />
+                  {/* СТАРОЕ НЕ РАБОТАЕТ, НЕ РАЗБИРАЛАСЬ С ЯКОРЕМ */}
                   {/* <AnchorLink href='#review' style={{color: "grey", textDecoration: "none"}}> */}
                     <p className={style.reviewText}>
                         {currentProduct ? currentProduct.comments.length : 0} 
@@ -245,10 +248,12 @@ const ProductPage: React.FC = () => {
             </div>
           </div>
         </div>
-  
-        <section id="review">
-          {/* <Reviews product={currentProduct} /> */}
-        </section>
+         {
+          currentProduct &&
+            <section id="review">
+              <Reviews product={currentProduct} />
+            </section>
+         }
       </div>
     )
 }

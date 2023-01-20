@@ -3,6 +3,14 @@ import request from "../request/request";
 import { ProductType } from "./slice-manage";
 import { links } from "../request/links";
 
+type AuthorType = {
+    fullname: string,
+}
+
+type CommentType = {
+    author: AuthorType,
+    body: string
+}
 
 export type RequestProductType = {
     id: string,
@@ -12,7 +20,7 @@ export type RequestProductType = {
     count?: number,
     src: string,
     reactions: ReactionType,
-    comments: string[] 
+    comments: CommentType[] 
   }
   
 type ReactionType = {
@@ -21,7 +29,10 @@ type ReactionType = {
     yourReaction: string | null
 }
 
-
+type SendCommentType = {
+    id: string,
+    review: string
+}
 
 type BasketType = {
     products: ProductType[], // массив объектов по типу BasketProductType
@@ -35,10 +46,10 @@ const initialState: BasketType = {
     error: null
 }
 
-type AddType = {
-    id: string,
-    token: string
-}
+// type AddType = {
+//     id: string,
+//     token: string
+// }
 
 // НЕВЕРНАЯ ИДЕЯ, Т.К. КАЖДЫЙ РАЗ ПРИ ПЕРЕКЛЮЧЕНИИ СТРАНИЦ БУДЕТ ПРОИСХОДИТЬ ЗАПРОС: СНОВА ВРЕМЯ, СНОВА ОТРИСОВКА...
 // И НЕ В БАСКЕТЕ ЗДЕСЬ ЭТОГО ДОЛЖНО НАХОДИТСЯ
@@ -79,6 +90,7 @@ const basketSlice = createSlice({
     name: "basket",
     initialState,
     reducers: {
+        // Не делаю запрос на сервер по корзине юзера, так как в продуктах не учитывается их добав. количество
         addToBasket: (state, action: PayloadAction<ProductType | RequestProductType>) => {
             const newProduct = state.products.find(item => item.id === action.payload.id);
             // const newProduct = state.basket.products.find(item => item.id === action.payload.id);
@@ -95,6 +107,21 @@ const basketSlice = createSlice({
                 }
             }
         },
+        addCommentToProduct: (state, action: PayloadAction<SendCommentType>) => {
+            const comment = {author: {fullname: "Name"}, body: action.payload.review};
+            // const comment = JSON.parse(action.payload.review);
+
+            state.products = state.products.map(item => {
+                if(item.id === action.payload.id && item.comments === undefined) {
+                    return {...item, comments: [comment]};
+                }else if(item.id === action.payload.id && item.comments !== undefined) {
+                    const comments = [...item.comments, comment];
+                    return item = {...item, comments};
+                }else {
+                    return item;
+                }
+            })
+        }
     },
     // extraReducers: (builder) => {
     //     builder
@@ -119,5 +146,5 @@ export default basketSlice.reducer;
 //     return action.type.endsWith('rejected'); // проверка (...заканчивается ли словом 'rejected')
 // } // тогда результат true либо false
 
-export const {addToBasket: addProductToLoсalBasket} = basketSlice.actions;
+export const {addToBasket: addProductToLoсalBasket, addCommentToProduct} = basketSlice.actions;
 

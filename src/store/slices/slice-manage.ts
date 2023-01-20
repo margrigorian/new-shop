@@ -3,12 +3,22 @@ import request from "../request/request";
 import { links } from "../request/links";
 import { UserType } from "../request/request";
 
+type AuthorType = {
+    fullname: string,
+}
+
+type CommentType = {
+    author: AuthorType,
+    body: string
+}
+
 export type ProductType = {
     id: string,
     price: number,
     src: string,
     title: string,
-    count?: number
+    count?: number,
+    comments?: CommentType[] 
 }
 
 type ManageType = {
