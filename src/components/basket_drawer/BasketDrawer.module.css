@@ -54,9 +54,10 @@
 .basketDrawerContent{
     width: 90%;
     height: 363px;
-    margin: 20px auto;
+    margin: 20px auto 0px auto;
     overflow: auto;
     padding-right: 20px;
+    /* border: 1px solid red; */
 }
 .basketDrawerContent::-webkit-scrollbar {
     width: 5px;
@@ -122,6 +123,9 @@
     cursor: pointer; 
 }
 
+.summaryContainer{
+    margin-bottom: 15px;
+}
 .buttonContainer{
     margin: 0 auto;
 }

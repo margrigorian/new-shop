@@ -6,8 +6,8 @@ import { useAppDispatch } from '../../store/hook';
 import { isOpenBasketDrawer } from '../../store/slices/slice-manage';
 import { NavLink } from 'react-router-dom';
 import { Drawer, Divider } from '@mui/material';
-// import BasketContent from '../basket_content/BasketContent';
-// import OrderSummary from '../order_summary/OrderSummary';
+import BasketContent from '../basket_content/BasketContent';
+import OrderSummary from '../order_summary/OrderSummary';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 
@@ -74,13 +74,13 @@ const BasketDrawer: React.FC = () => {
                     </div> : <div className={style.basketDrawerContent}>
                                 {/* ПЕРЕАДЕТ changeStatusOfBasketNavBar, ИНАЧЕ ВЫДАЕТ ПУСТУЮ КОРЗИНУ */}
                                 
-                                {/* <BasketContent // ОТРИСУЮТСЯ ТОВАРЫ ИЗ КОРЗИНЫ
-                                  closeBasketNavBar={changeStatusOfBasketNavBar} 
+                                <BasketContent // ОТРИСУЮТСЯ ТОВАРЫ ИЗ КОРЗИНЫ
+                                  // closeBasketNavBar={changeStatusOfBasketNavBar} 
                                   
                                   // ПРОПСЫ РАЗМЕРОВ НЕ СЧИТЫВАЮТСЯ
                                   // imgSize={"80px"} 
                                   // productInfoContainerSize={"80px"}
-                                /> */}
+                                />
                             </div> :
                     
                     <div className={style.basketContent}>
@@ -97,8 +97,8 @@ const BasketDrawer: React.FC = () => {
 
           {
             basket.length !== 0 && activeBasketChapter ? 
-                <div>
-                  {/* <OrderSummary /> */}
+                <div className={style.summaryContainer}>
+                  <OrderSummary />
                   <NavLink 
                     to="/basket" style={{textDecoration: "none"}} 
                     onClick={() => {

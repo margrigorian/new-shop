@@ -1,0 +1,16 @@
+.container{
+    width: 90%;
+    margin: 0 auto;
+}
+.orderElement{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -23px;
+    font-size: 14px;
+}
+.total{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 18px;
+}

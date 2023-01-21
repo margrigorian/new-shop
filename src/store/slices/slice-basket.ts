@@ -34,6 +34,11 @@ type SendCommentType = {
     review: string
 }
 
+type CountType = {
+    id: string,
+    count: string
+}
+
 type BasketType = {
     products: ProductType[], // массив объектов по типу BasketProductType
     loading: boolean,
@@ -107,6 +112,12 @@ const basketSlice = createSlice({
                 }
             }
         },
+        changeCount: (state, action: PayloadAction<CountType>) => {
+            const currentProduct = state.products.find(item => item.id === action.payload.id);
+            if(currentProduct) {
+                currentProduct.count = +action.payload.count; 
+            }
+        },
         addCommentToProduct: (state, action: PayloadAction<SendCommentType>) => {
             const comment = {author: {fullname: "Name"}, body: action.payload.review};
             // const comment = JSON.parse(action.payload.review);
@@ -121,6 +132,9 @@ const basketSlice = createSlice({
                     return item;
                 }
             })
+        },
+        removeProduct: (state, action: PayloadAction<string>) => {
+            state.products = state.products.filter(item => item.id !== action.payload);
         }
     },
     // extraReducers: (builder) => {
@@ -146,5 +160,5 @@ export default basketSlice.reducer;
 //     return action.type.endsWith('rejected'); // проверка (...заканчивается ли словом 'rejected')
 // } // тогда результат true либо false
 
-export const {addToBasket: addProductToLoсalBasket, addCommentToProduct} = basketSlice.actions;
+export const {addToBasket: addProductToLoсalBasket, changeCount: changeProductCountInBasket, addCommentToProduct, removeProduct: removeProductFromBasket} = basketSlice.actions;
 
