@@ -160,5 +160,9 @@ export default basketSlice.reducer;
 //     return action.type.endsWith('rejected'); // проверка (...заканчивается ли словом 'rejected')
 // } // тогда результат true либо false
 
-export const {addToBasket: addProductToLoсalBasket, changeCount: changeProductCountInBasket, addCommentToProduct, removeProduct: removeProductFromBasket} = basketSlice.actions;
+export const {
+                addToBasket: addProductToLoсalBasket, 
+                changeCount: changeProductCountInBasket, 
+                addCommentToProduct, 
+                removeProduct: removeProductFromBasket} = basketSlice.actions;
 

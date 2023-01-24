@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../store/hook';
 import { useAppDispatch } from '../../store/hook';
 import { NavLink } from 'react-router-dom';
+import { isOpenBasketNavBar } from '../../store/slices/slice-manage';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import CheckroomIcon from '@mui/icons-material/Checkroom';
@@ -232,10 +233,10 @@ const ProductPage: React.FC = () => {
   
             {
               basketProduct && 
-                <NavLink to="/basket">
+                <NavLink to="/basket-page">
                   <button 
                     className={`${style.button} ${style.orderButton}`}
-                    // onClick={() => openBasketNavBar(true)}
+                    onClick={() => dispatch(isOpenBasketNavBar(true))}
                   >
                     Process order
                   </button>

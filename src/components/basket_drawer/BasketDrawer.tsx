@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 import { Drawer, Divider } from '@mui/material';
 import BasketContent from '../basket_content/BasketContent';
 import OrderSummary from '../order_summary/OrderSummary';
+import { isOpenBasketNavBar } from '../../store/slices/slice-manage';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 
@@ -100,10 +101,10 @@ const BasketDrawer: React.FC = () => {
                 <div className={style.summaryContainer}>
                   <OrderSummary />
                   <NavLink 
-                    to="/basket" style={{textDecoration: "none"}} 
+                    to="/basket-page" style={{textDecoration: "none"}} 
                     onClick={() => {
-                    //   closeCart()
-                    //   changeStatusOfBasketNavBar(true)
+                      dispatch(isOpenBasketDrawer(false))
+                      dispatch(isOpenBasketNavBar(true))
                     }}
                   >
                     <div className={style.buttonContainer}>

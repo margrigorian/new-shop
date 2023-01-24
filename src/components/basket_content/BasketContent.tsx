@@ -4,6 +4,7 @@ import { useAppSelector, useAppDispatch } from '../../store/hook';
 import { NavLink } from 'react-router-dom';
 import { changeProductCountInBasket } from '../../store/slices/slice-basket';
 import { removeProductFromBasket } from '../../store/slices/slice-basket';
+import { isOpenBasketNavBar } from '../../store/slices/slice-manage';
 import request from '../../store/request/request';
 import { links } from '../../store/request/links';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
@@ -55,7 +56,7 @@ const BasketContent: React.FC = () => {
                         >
                             <div className={style.productInfo}>
                                 <NavLink to={`/product/${item.id}`} 
-                                    // onClick={() => closeBasketNavBar()}
+                                    onClick={() => dispatch(isOpenBasketNavBar(false))}
                                 >
                                     <div 
                                         style={{backgroundImage: `url(${item.src})`}} 
@@ -66,7 +67,7 @@ const BasketContent: React.FC = () => {
                                     <NavLink 
                                         to={`/product/${item.id}`} 
                                         style={{textDecoration: "none", color: 'inherit'}}
-                                        // onClick={() => closeBasketNavBar()}
+                                        onClick={() => dispatch(isOpenBasketNavBar(false))}
                                     >
                                         <div style={{fontWeight: "500"}} className={style.title}>{item.title}</div>
                                     </NavLink>
