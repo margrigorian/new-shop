@@ -10,6 +10,7 @@ import HomePage from './pages/home_page/HomePage';
 import LimitedEditionPage from './pages/limited_edition_page/LimitedEditionPage';
 import CollectionPage from './pages/collection_page/CollectionPage';
 import ProductPage from './pages/product_page/ProductPage';
+import AccessoriasPage from './pages/acccessorias_page/AccessoriasPage';
 import SearchPage from './pages/search_page/SearchPage';
 import BasketNavBar from './components/basket_navbar/BasketNavBar';
 import BasketPage from './pages/basket_page/BasketPage';
@@ -37,6 +38,7 @@ const App: React.FC = () => {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/collection" element={<CollectionPage />}></Route>
           <Route path="/limited-edition-page" element={<LimitedEditionPage />}></Route>
+          <Route path="/accessorias" element={<AccessoriasPage />}></Route>
           <Route path="/search" element={<SearchPage />}></Route>
           <Route path="/product/:id" element={<ProductPage />}></Route>
           <Route path="/basket-page" element={<BasketPage />}></Route>

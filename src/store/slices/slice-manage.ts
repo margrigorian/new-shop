@@ -28,6 +28,7 @@ type ManageType = {
     isActiveRegistrationForm: boolean,
     collectionProducts: ProductType[] | null,
     limitedEditionProducts: ProductType[] | null,
+    AccessoriasProducts: ProductType[] | null,
     isActiveBasketNavBar: boolean,
     isActiveMenu: boolean,
     isActiveSearchNavBar: boolean,
@@ -42,6 +43,7 @@ const initialState: ManageType = {
     isActiveRegistrationForm: false,
     collectionProducts: [],
     limitedEditionProducts: [],
+    AccessoriasProducts: [],
     isActiveBasketNavBar: false,
     isActiveMenu: false,
     isActiveSearchNavBar: false,
@@ -96,6 +98,9 @@ const managementSlice = createSlice({
         getProductsOfLimitedEdition: (state, action) => {
             state.limitedEditionProducts = action.payload;
         },
+        getProductsOfAccessorias: (state, action) => {
+            state.AccessoriasProducts = action.payload;
+        },
         isOpenBasketNavBar: (state, action: PayloadAction<boolean>) => {
             state.isActiveBasketNavBar = action.payload;
         }
@@ -131,4 +136,5 @@ export const {
                 isOpenLoginDrawer, isOpenBasketDrawer, 
                 isOpenRegistationForm, isOpenMenu, 
                 isOpenSearchNavBar, getProductsOfCollection, 
-                getProductsOfLimitedEdition, isOpenBasketNavBar} = managementSlice.actions;
+                getProductsOfLimitedEdition, getProductsOfAccessorias, 
+                isOpenBasketNavBar} = managementSlice.actions;

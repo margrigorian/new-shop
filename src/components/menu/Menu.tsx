@@ -57,9 +57,9 @@ const Menu: React.FC = () => {
                                 COLLECTION
                             </p>
                         </NavLink>
-                        {/* <NavLink to="/accessorias" style={{textDecoration: "none"}} onClick={() => dispatch(isOpenMenu(false))}> */}
+                        <NavLink to="/accessorias" style={{textDecoration: "none"}} onClick={() => dispatch(isOpenMenu(false))}>
                             <p className={`${style.menuListItem} ${style.listItemPadding}`}>ACCESSORIAS</p>
-                        {/* </NavLink> */}
+                        </NavLink>
                         <p className={`${style.menuListItem} ${style.listItemPadding}`}>SHOES</p>
                     </div>
                     <div className={style.listItemMarginBottom}>
