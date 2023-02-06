@@ -32,8 +32,8 @@ const AccessoriasPage: React.FC = () => {
     <div className={style.container}>
         <div className={style.headColorBlock}>ACCESSORIAS</div>
         {
-          manage.AccessoriasProducts !== null ?
-            manage.AccessoriasProducts.length !== 0 ? <ProductList products={manage.AccessoriasProducts} /> : undefined 
+          manage.accessoriasProducts !== null ?
+            manage.accessoriasProducts.length !== 0 ? <ProductList products={manage.accessoriasProducts} /> : undefined 
               : <h1>Loading...</h1>
         }
         

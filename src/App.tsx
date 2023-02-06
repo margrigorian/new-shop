@@ -11,6 +11,7 @@ import LimitedEditionPage from './pages/limited_edition_page/LimitedEditionPage'
 import CollectionPage from './pages/collection_page/CollectionPage';
 import ProductPage from './pages/product_page/ProductPage';
 import AccessoriasPage from './pages/acccessorias_page/AccessoriasPage';
+import SearchNavBar from './components/search_navbar/SearchNavBar';
 import SearchPage from './pages/search_page/SearchPage';
 import BasketNavBar from './components/basket_navbar/BasketNavBar';
 import BasketPage from './pages/basket_page/BasketPage';
@@ -28,6 +29,11 @@ const App: React.FC = () => {
         <BasketDrawer />
         <RegistrationForm />
         {/* Если делаю  BasketNavBar модальным окном, все фиксируется, нет скролла*/}
+
+        {
+          manage.isActiveSearchNavBar && <SearchNavBar />
+        }
+
         {
           manage.isActiveBasketNavBar && <BasketNavBar />
         }

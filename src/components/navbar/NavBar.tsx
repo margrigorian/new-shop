@@ -5,6 +5,7 @@ import { useAppSelector } from '../../store/hook';
 import { useAppDispatch } from '../../store/hook';
 import { isOpenLoginDrawer } from '../../store/slices/slice-manage';
 import { isOpenBasketDrawer } from '../../store/slices/slice-manage';
+import { isOpenSearchNavBar } from '../../store/slices/slice-manage';
 import { isOpenMenu } from '../../store/slices/slice-manage';
 import Menu from '../menu/Menu';
 import { IconButton, Typography } from "@mui/material";
@@ -70,13 +71,13 @@ const NavBar: React.FC = () => {
                         <NavLink 
                             to={manage.token !== "" ? "/search" : '/'} 
                             style={{textDecoration: "none", color: "rgb(52, 51, 51)"}}
-                            // onClick={() => {
-                            //     if(manage.token === "") {
-                            //         openLoginDrawer();
-                            //     }else {
-                            //         openSearchNavBar(true);
-                            //     }
-                            // }}
+                            onClick={() => {
+                                if(manage.token === "") {
+                                    dispatch(isOpenLoginDrawer(true));
+                                }else {
+                                    dispatch(isOpenSearchNavBar(true));
+                                }
+                            }}
                         >
                             <div className={`${style.searchContainer} ${style.iconHover}`}>
                                 <Search style={{color: "lightgrey"}} className={style.iconHover} />

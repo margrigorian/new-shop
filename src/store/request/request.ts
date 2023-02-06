@@ -17,7 +17,7 @@ type CommentType = {
     body: string
 }
 
-function request(method: string, url: string, payload: UserType | SendProductType | CommentType | undefined, token: string) {
+function request(method: string, url: string, payload: UserType | SendProductType | CommentType | string | undefined, token: string) {
     return axios({method, url, data: payload, headers: {
         "Authorization": `Bearer ${token}` 
     }})
